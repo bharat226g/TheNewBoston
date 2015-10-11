@@ -1,5 +1,7 @@
 package com.thenewboston.travis;
 
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -41,7 +43,12 @@ public class Camera extends Activity implements View.OnClickListener {
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
 		case R.id.bSetWall:
-			
+			try {
+				getApplicationContext().setWallpaper(bmp);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		case R.id.ibTakePic:
 			i = new Intent (android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
